@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20220316165750_createSliderTable.Designer.cs" />
     <Compile Remove="Migrations\20220316165810_createSlider.cs" />
     <Compile Remove="Migrations\20220316165810_createSlider.Designer.cs" />
+    <Compile Remove="Migrations\20220317200031_createEventSpeaker.cs" />
+    <Compile Remove="Migrations\20220317200031_createEventSpeaker.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

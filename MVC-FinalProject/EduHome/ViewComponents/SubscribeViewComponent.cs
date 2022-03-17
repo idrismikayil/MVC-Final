@@ -13,11 +13,9 @@ namespace EduHome.ViewComponents
             _context = context;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync()
+        public IViewComponentResult Invoke()
         {
-            var layout = await _context.Layout.FirstOrDefaultAsync();
-
-            return View(layout);
+            return View();
         }
     }
 }

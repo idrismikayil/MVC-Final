@@ -21,6 +21,9 @@ namespace EduHome.DAL
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseCategory> CourseCategories { get; set; }
         public DbSet<Feature> Features { get; set; }
-
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Speaker> Speakers { get; set; }
+        public DbSet<EventSpeaker> EventSpeakers { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
     }
 }

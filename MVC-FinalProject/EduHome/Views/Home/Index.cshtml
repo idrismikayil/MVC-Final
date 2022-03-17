@@ -42,7 +42,7 @@
                             @foreach (var item in Model.Notices)
                            {
                                <div class="single-notice-left mb-25 pb-25">
-                                <h4>@item.Date.ToString("dd.MM.yyyy")</h4>
+                                <h4>@item.Date.ToString("dd, MMMM yyyy")</h4>
                                 <p>@item.Description</p>
                             </div>
                            }
@@ -109,6 +109,31 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
+                    @foreach (var item in Model.Events)
+                   {
+                       
+                         <div class="single-event mb-35">
+                            <div class="event-date">
+                                <h3><a href="~/assets/event-details.html">@item.Date.ToString("dd")<br>@item.Date.ToString("MMMM")</a></h3>
+                            </div>
+                            <div class="event-content text-start">
+                                <div class="event-content-left">
+                                    <h4><a href="~/assets/event-details.html">@item.Title</a></h4>
+                                    <ul>
+                                        <li><i class="fa fa-clock-o"></i>@item.HourStart.ToString("hh:mm tt") - @item.HourEnd.ToString("hh:mm tt")</li>
+                                        <li><i class="fa fa-map-marker"></i>@item.Location</li>
+                                    </ul>
+                                </div>
+                                <div class="event-content-right">
+                                    <a class="default-btn" href="~/assets/event-details.html">join now</a>
+                                </div>
+                            </div>
+                          </div>
+                   }
+                    </div>
+
+
+                    @*<div class="col-lg-6">
                         <div class="single-event mb-35">
                             <div class="event-date">
                                 <h3><a href="~/assets/event-details.html">20 <span>June</span></a></h3>
@@ -247,7 +272,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
@@ -288,63 +313,30 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-6">
+
+                    @foreach (var item in Model.Blogs)
+                   {
+                       <div class="col-lg-4 col-md-6">
                         <div class="single-blog">
                             <div class="blog-img">
-                                <a href="~/assets/blog-details.html"><img src="~/assets/img/blog/blog1.jpg" alt="blog"></a>
+                                <a href="~/assets/blog-details.html"><img src="~/assets/img/blog/@item.Image" alt="blog"></a>
                                 <div class="blog-hover">
                                     <a href="~/assets/blog-details.html"><i class="fa fa-link"></i></a>
                                 </div>
                             </div>
                             <div class="blog-content">
                                 <div class="blog-top">
-                                    <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
+                                    <p>By @item.AuthorName  /  @item.CreatedAt.ToString("dd MMMM")  @*/  <i class="fa fa-comments-o"></i> 4*@</p>
                                 </div>
                                 <div class="blog-bottom">
-                                    <h2><a href="~/assets/blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
+                                    <h2><a href="~/assets/blog-details.html">@item.Title </a></h2>
                                     <a href="~/assets/blog-details.html">read more</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-blog">
-                            <div class="blog-img">
-                                <a href="~/assets/blog-details.html"><img src="~/assets/img/blog/blog2.jpg" alt="blog"></a>
-                                <div class="blog-hover">
-                                    <a href="~/assets/blog-details.html"><i class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-top">
-                                    <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                                </div>
-                                <div class="blog-bottom">
-                                    <h2><a href="~/assets/blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                                    <a href="~/assets/blog-details.html">read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-blog mb-0">
-                            <div class="blog-img">
-                                <a href="~/assets/blog-details.html"><img src="~/assets/img/blog/blog3.jpg" alt="blog"></a>
-                                <div class="blog-hover">
-                                    <a href="~/assets/blog-details.html"><i class="fa fa-link"></i></a>
-                                </div>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-top">
-                                    <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                                </div>
-                                <div class="blog-bottom">
-                                    <h2><a href="~/assets/blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                                    <a href="~/assets/blog-details.html">read more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   }
+                    
                 </div>
             </div>
         </div>
