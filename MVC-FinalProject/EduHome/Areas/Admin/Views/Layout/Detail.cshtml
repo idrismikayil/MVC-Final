@@ -1,0 +1,53 @@
+﻿@model Layout
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body" style="background-color: #B2BABB">
+                  <ul>
+                      <li>
+                      Navbar Logo:<br>
+                      <img src="~/assets/img/logo/@Model.NavLogo" style="width: 200px; border-radius: 0%;" />
+                  </li><br><br>
+                  <li>
+                      Footer Logo:<br>
+                      <img src="~/assets/img/logo/@Model.FooterLogo" style="width: 200px; border-radius: 0%;" />
+                  </li><br><br>
+                  <li>
+                      First Social Media Logo: @Html.Raw(@Model.FirstSocialMediaLogo)
+                  </li>
+                   <li>
+                      Second Social Media Logo: @Html.Raw(@Model.SecondSocialMediaLogo)
+                  </li>
+                   <li>
+                      Third Social Media Logo: @Html.Raw(@Model.ThirdSocialMediaLogo)
+                  </li>
+                   <li>
+                      Fourth Social Media Logo: @Html.Raw(@Model.FourthSocialMediaLogo)
+                  </li>
+                   <li>
+                      First URL: @Model.FirstURL
+                  </li>
+                   <li>
+                      Second URL: @Model.SecondURL
+                  </li>
+                   <li>
+                      Third URL: @Model.ThirdURL
+                  </li>
+                   <li>
+                      Fourth URL: @Model.FourthURL
+                  </li>
+                  </ul>
+                  
+                  <a class="btn btn-primary" asp-action="Index">Cancel</a>
+                </div>
+              </div>
+            </div>
+             </div>
+              </div>
+            </div>

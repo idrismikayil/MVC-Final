@@ -10,8 +10,7 @@ namespace EduHome.Models
         [Required]
         [StringLength(maximumLength: 200)]
         public string Description { get; set; }
-
-        [NotMapped]
-        public DateTime Date { get; set; } = DateTime.Now;
+        [Required]
+        public DateTime Date { get; set; }
     }
 }

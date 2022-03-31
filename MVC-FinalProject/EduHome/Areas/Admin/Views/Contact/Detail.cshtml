@@ -1,0 +1,44 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body" style="background-color: #ffffff">
+                  <ul>
+                      <li>
+                      First Logo:<br>
+                      <img src="~/assets/img/contact/@Model.IconOne" style="width: 50px; border-radius: 50%;" />
+                  </li>
+                  <li>
+                      Second Logo:<br>
+                      <img src="~/assets/img/contact/@Model.IconTwo" style="width: 50px; border-radius: 50%;" />
+                  </li>
+                  <li>
+                      Third Logo:<br>
+                      <img src="~/assets/img/contact/@Model.IconThree" style="width: 50px; border-radius: 50%;" />
+                  </li>
+                     
+                 
+                   <li>
+                      Address 1 : @Model.AddressOne
+                  </li>
+                   <li>
+                      Address 2 : @Model.AddressTwo
+                  </li>
+                   <li>
+                      Number : @Model.Number
+                  </li>
+                  </ul>
+                  
+                  <a class="btn btn-primary" asp-action="Index">Cancel</a>
+                </div>
+              </div>
+            </div>
+             </div>
+              </div>
+            </div>

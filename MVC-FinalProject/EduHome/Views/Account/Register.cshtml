@@ -1,0 +1,63 @@
+﻿@model RegisterVM
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+		<div class="banner-area-wrapper">
+            <div class="banner-area text-center">	
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="banner-content-wrapper">
+                                <div class="banner-content">
+                                    <h2>sign up</h2> 
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+		<!-- Banner Area End -->
+        <!-- Register start -->
+        <div class="register-area pt-150 pb-150">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 text-center">
+                        <div class="login">
+                            <div class="login-form-container">
+                                <div class="login-text">
+                                    <h2>sign up</h2>
+                                    <span>Please login using account detail bellow.</span>
+                                </div>
+                                <div class="login-form">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <form asp-action="Register" method="post">
+                                        <span class="text-danger" asp-validation-for="Fullname"></span>
+                                        <input asp-for="Fullname" type="text" placeholder="Fullname">
+
+                                        <span class="text-danger" asp-validation-for="Username"></span>
+                                        <input asp-for="Username" type="text"  placeholder="Username">
+                                    
+                                        <span class="text-danger" asp-validation-for="Email"></span>
+                                        <input asp-for="Email" type="text"  placeholder="Email">
+
+                                        <span class="text-danger" asp-validation-for="Password"></span>
+                                        <input asp-for="Password" type="password" placeholder="Password">
+                                    
+                                        <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                                        <input asp-for="ConfirmPassword" type="password" placeholder="Confirm Password">
+
+                                        <div class="button-box">
+                                            <button type="submit" class="default-btn">sign up</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+

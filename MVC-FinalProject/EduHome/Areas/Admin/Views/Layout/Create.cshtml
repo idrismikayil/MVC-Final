@@ -1,0 +1,90 @@
+﻿@model Layout
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Create Layout</h4>
+                  
+                  <form class="forms-sample" method="post" asp-controller="Layout" asp-action="Create" enctype="multipart/form-data">
+                           
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Navbar Logo</label>
+                                <input accept="image/*" asp-for="NavImageFile" class="form-control" placeholder="Image">
+                                <span asp-validation-for="NavImageFile" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Footer Logo</label>
+                                <input accept="image/*" asp-for="FooterImageFile" class="form-control" placeholder="Image">
+                                <span asp-validation-for="FooterImageFile" class="text-danger"></span>
+                            </div> 
+                             <div class="form-group">
+                                <label for="exampleInputUsername1">First Social Media Logo </label>
+                                <input asp-for="FirstSocialMediaLogo" class="form-control" placeholder="">
+                                <span asp-validation-for="FirstSocialMediaLogo" class="text-danger"></span>
+                            </div>
+                             <div class="form-group">
+                                <label for="exampleInputUsername1">Second Social Media Logo</label>
+                                <input asp-for="SecondSocialMediaLogo" class="form-control" placeholder="">
+                                <span asp-validation-for="SecondSocialMediaLogo" class="text-danger"></span>
+                            </div>
+                             <div class="form-group">
+                                <label for="exampleInputUsername1">Third Social Media Logo</label>
+                                <input asp-for="ThirdSocialMediaLogo" class="form-control" placeholder="">
+                                <span asp-validation-for="ThirdSocialMediaLogo" class="text-danger"></span>
+                            </div>
+                             <div class="form-group">
+                                <label for="exampleInputUsername1">Fourth Social Media Logo</label>
+                                <input asp-for="FourthSocialMediaLogo" class="form-control" placeholder="">
+                                <span asp-validation-for="FourthSocialMediaLogo" class="text-danger"></span>
+                            </div>
+                             <div class="form-group">
+                                <label for="exampleInputUsername1">First URL</label>
+                                <input asp-for="FirstURL" class="form-control" placeholder="">
+                                <span asp-validation-for="FirstURL" class="text-danger"></span>
+                            </div>
+                             <div class="form-group">
+                                <label for="exampleInputUsername1">Second URL</label>
+                                <input asp-for="SecondURL" class="form-control" placeholder="">
+                                <span asp-validation-for="SecondURL" class="text-danger"></span>
+                            </div>
+                             <div class="form-group">
+                                <label for="exampleInputUsername1">Third URL</label>
+                                <input asp-for="ThirdURL" class="form-control" placeholder="">
+                                <span asp-validation-for="ThirdURL" class="text-danger"></span>
+                            </div>
+                             <div class="form-group">
+                                <label for="exampleInputUsername1">Fourth URL</label>
+                                <input asp-for="FourthURL" class="form-control" placeholder="">
+                                <span asp-validation-for="FourthURL" class="text-danger"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary me-2"> Submit</button>
+                            <a class="btn btn-light" asp-action="Index">Cancel</a>
+                        </form>
+                </div>
+              </div>
+             </div>
+           </div>
+          </div>
+         </div>
+
+         @section Scripts{
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Description'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+}

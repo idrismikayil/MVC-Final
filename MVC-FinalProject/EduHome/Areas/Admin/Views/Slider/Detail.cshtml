@@ -1,0 +1,24 @@
+﻿@model Slider
+@{
+    ViewData["Title"] = "Detail";
+}
+
+ <div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">@Html.Raw(@Model.TopTitle)</h4>
+                  <img src="~/assets/img/slider/@Model.Image" style="width: 450px" />
+                  <p>
+                   @Html.Raw(Model.Description)
+                  </p>
+                  
+                  <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+                </div>
+              </div>
+            </div>
+           </div>
+          </div>
+        </div>

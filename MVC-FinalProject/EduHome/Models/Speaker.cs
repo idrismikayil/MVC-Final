@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EduHome.Models
 {
@@ -14,8 +16,11 @@ namespace EduHome.Models
         public string Fullname { get; set; }
         [Required]
         [StringLength(maximumLength: 50)]
-        public int Position { get; set; }
+        public string Position { get; set; }
         public List<EventSpeaker> EventSpeakers { get; set; }
+        [NotMapped]
+        [Required]
+        public IFormFile ImageFile { get; set; }
 
     }
 }

@@ -1,5 +1,8 @@
+using EduHome.DAL;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
@@ -15,13 +18,13 @@ namespace EduHome
         {
             var host = CreateHostBuilder(args).Build();
 
-            //using (var scope = host.Services.CreateScope())
-            //{
-            //    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-            //    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            //    DataInitializer dataInit = new DataInitializer(dbContext, roleManager);
-            //    await dataInit.SeedData();
-            //}
+            using (var scope = host.Services.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                DataInitializer dataInit = new DataInitializer(dbContext, roleManager);
+                await dataInit.SeedData();
+            }
 
             await host.RunAsync();
         }

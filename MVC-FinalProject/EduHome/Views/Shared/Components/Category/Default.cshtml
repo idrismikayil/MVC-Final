@@ -1,0 +1,8 @@
+﻿@model List<Category>
+
+                                <ul>
+                                     @foreach (var item in Model)
+                                   {
+                                       <li><a asp-controller="Category" asp-action="Index" asp-route-id="@item.Id">@item.Name.ToUpper()</a></li>
+                                   }
+                                </ul>

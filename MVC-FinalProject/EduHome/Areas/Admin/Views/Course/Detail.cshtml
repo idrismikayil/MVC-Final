@@ -1,0 +1,77 @@
+﻿@model Course
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+
+                <div class="card-body" style="background-color: #B2BABB">
+                  <h4 class="card-title">@Model.MainTitle</h4>
+
+                  <ul>
+                      
+                  
+                  <li>
+                       Image: <br> <img src="~/assets/img/course/@Model.Image">
+                  </li>
+                  <li>
+                      Main Description: @Model.MainDesc
+                  </li>
+                  <li>
+                       About Description: @Model.AboutDesc
+                  </li>
+                  <li>
+                       Apply Description: @Model.ApplyDesc
+                  </li>
+                   <li>
+                       Certification Description: @Model.CertificationDesc
+                  </li>
+                  <li>
+                       Assesments: @Model.Feature.Assesments
+                  </li>
+                  <li>
+                      Duration: @Model.Feature.Duration
+                  </li>
+                  <li>
+                      CourseDuration: @Model.Feature.CourseDuration
+                  </li>
+                  <li>
+                      Language: @Model.Feature.Language
+                  </li>
+                  <li>
+                     Students: @Model.Feature.Students
+                  </li>
+                  <li>
+                      Starts: @Model.Feature.Starts.ToString("dd, MMMM yyyy")
+                  </li>
+                  <li>
+                      SkillLevel: @Model.Feature.SkillLevel
+                  </li>
+                  <li>
+                    Price: @Model.Feature.Price
+                  </li>
+                  
+                  <br><br>
+                  <li>-----Categories-----</li><br>
+                 @foreach (var item in Model.CourseCategories)
+                {
+                     <li>
+                      Category Name : @item.Category.Name
+                  </li>
+                   <br><br><br>
+                }
+                  </ul>
+                  
+                  <a class="btn btn-primary" asp-action="Index">Cancel</a>
+                </div>
+              </div>
+            </div>
+             </div>
+              </div>
+            </div>
+
+

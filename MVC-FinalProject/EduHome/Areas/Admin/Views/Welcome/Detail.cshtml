@@ -1,0 +1,26 @@
+﻿@model WelcomeMessage
+@{
+    ViewData["Title"] = "Detail";
+}
+
+ <div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">@Html.Raw(@Model.Title)</h4>
+                  <img src="~/assets/img/about/@Model.Image" style="width: 450px" /><br><br><br>
+                  <p>Description: </p>
+                  <p>
+                   @Html.Raw(Model.Description)
+                  </p><br><br>
+                  
+                   
+                   <a class="btn btn-primary" asp-action="Index">Cancel</a>
+                </div>
+              </div>
+            </div>
+           </div>
+          </div>
+        </div>

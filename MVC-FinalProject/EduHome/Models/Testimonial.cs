@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EduHome.Models
 {
@@ -17,5 +19,8 @@ namespace EduHome.Models
         [Required]
         [StringLength(maximumLength: 50)]
         public string Position { get; set; }
+        [NotMapped]
+        [Required]
+        public IFormFile ImageFile { get; set; }
     }
 }

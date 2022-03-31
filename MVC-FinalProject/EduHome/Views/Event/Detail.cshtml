@@ -1,0 +1,144 @@
+﻿@model EventDetailVM
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="banner-area-wrapper">
+            <div class="banner-area text-center">	
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="banner-content-wrapper">
+                                <div class="banner-content">
+                                    <h2>event / details</h2> 
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+		<!-- Banner Area End -->
+        <!-- Event Details Start -->
+        <div class="event-details-area blog-area pt-150 pb-140">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="event-details">
+                            <div class="event-details-img">
+                                <img src="~/assets/img/event/@Model.Event.Image" alt="event-details">
+                                <div class="event-date">
+                                    <h3>@Model.Event.Date.ToString("dd")<br>@Model.Event.Date.ToString("MMMM")</h3>  
+                                </div>
+                            </div>
+                            <div class="event-details-content">
+                                <h2>@Model.Event.Title</h2>
+                                <ul>
+                                    <li><span>time : </span>@Model.Event.HourStart.ToString("hh:mm tt") - @Model.Event.HourEnd.ToString("hh:mm tt")</li>
+                                    <li>@Model.Event.Location</li>
+                                </ul>
+                                <p>@Model.Event.Description</p>
+                                <div class="speakers-area fix">
+                                    <h4>speakers</h4>
+                                   @foreach (var item in Model.Speakers)
+                                  {
+                                       <div class="single-speaker">
+                                        <div class="speaker-img">
+                                            <img src="~/assets/img/event/@item.Image" alt="speaker">
+                                        </div>
+                                        <div class="speaker-name">
+                                            <h5>@item.Fullname</h5>
+                                            <p>@item.Position</p>
+                                        </div>
+                                    </div>
+                                  }
+                                    
+                                </div>
+                            </div>    
+                              @await Component.InvokeAsync("Reply") 
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog-sidebar right">
+                            <div class="single-blog-widget mb-50">
+                                <h3>search</h3>
+                                <div class="blog-search">
+                                    <form id="search" action="#">
+                                        <input type="search" placeholder="Search..." name="search" />
+                                        <button type="submit">
+                                            <span><i class="fa fa-search"></i></span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="single-blog-widget mb-50">
+                                <h3>categories</h3>
+                              @await Component.InvokeAsync("Category") 
+                                   
+                            </div>
+                            <div class="single-blog-widget mb-50">
+                                <div class="single-blog-banner">
+                                    <a href="blog-details.html" id="blog"><img src="~/assets/img/blog/blog-img.jpg" alt="blog"></a>
+                                    <h2>best<br> eductaion<br> theme</h2> 
+                                </div>
+                            </div>
+                            <div class="single-blog-widget mb-50">
+                                <h3>latest post</h3>
+                                <div class="single-post mb-30">
+                                    <div class="single-post-img">
+                                        <a href="blog-details.html"><img src="~/assets/img/post/post1.jpg" alt="post">
+                                            <div class="blog-hover">
+                                                <i class="fa fa-link"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="single-post-content">
+                                        <h4><a href="blog-details.html">English Language Course for you</a></h4>
+                                        <p>By Alex  /  June 20, 2017</p>
+                                    </div>
+                                </div>
+                                <div class="single-post mb-30">
+                                    <div class="single-post-img">
+                                        <a href="blog-details.html"><img src="~/assets/img/post/post2.jpg" alt="post">
+                                            <div class="blog-hover">
+                                                <i class="fa fa-link"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="single-post-content">
+                                        <h4><a href="blog-details.html">Advance Web Design and Develop</a></h4>
+                                        <p>By Alex  /  June 20, 2017</p>
+                                    </div>
+                                </div>
+                                <div class="single-post">
+                                    <div class="single-post-img">
+                                        <a href="blog-details.html"><img src="~/assets/img/post/post3.jpg" alt="post">
+                                            <div class="blog-hover">
+                                                <i class="fa fa-link"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="single-post-content">
+                                        <h4><a href="blog-details.html">English Language Course for you</a></h4>
+                                        <p>By Alex  /  June 20, 2017</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-blog-widget">
+                                <h3>tags</h3>
+                                <div class="single-tag">
+                                    <a href="blog-details.html" class="mr-10 mb-10">course</a>
+                                    <a href="blog-details.html" class="mr-10 mb-10">education</a>
+                                    <a href="blog-details.html" class="mb-10">teachers</a>
+                                    <a href="blog-details.html" class="mr-10">learning</a>
+                                    <a href="blog-details.html" class="mr-10">university</a>
+                                    <a href="blog-details.html">events</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+

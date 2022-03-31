@@ -1,0 +1,148 @@
+﻿@model CourseVM
+@{
+    ViewData["Title"] = "Update";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Update Courses</h4>
+                        <form class="forms-sample" method="post" enctype="multipart/form-data">
+                             <div class="form-group">
+                                <label for="exampleInputUsername1">Image</label>
+                                <input asp-for="Course.ImageFile" accept="image/*" class="form-control" placeholder="Image">
+                                <span asp-validation-for="Course.ImageFile" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">MainTitle</label>
+                                <input asp-for="Course.MainTitle" class="form-control" placeholder="">
+                                <span asp-validation-for="Course.MainTitle" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">MainDesc</label>
+                                <textarea asp-for="Course.MainDesc" class="form-control" placeholder=""></textarea>
+                                <span asp-validation-for="Course.MainDesc" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">AboutDesc</label>
+                                <textarea asp-for="Course.AboutDesc" class="form-control" placeholder=""></textarea>
+                                <span asp-validation-for="Course.AboutDesc" class="text-danger"></span>
+                            </div>
+                             <div class="form-group">
+                                <label for="exampleInputUsername1">ApplyDesc</label>
+                                <textarea asp-for="Course.ApplyDesc" class="form-control" placeholder=""></textarea>
+                                <span asp-validation-for="Course.ApplyDesc" class="text-danger"></span>
+                            </div>
+                             <div class="form-group">
+                                <label for="exampleInputUsername1">CertificationDesc</label>
+                                <textarea asp-for="Course.CertificationDesc" class="form-control" placeholder=""></textarea>
+                                <span asp-validation-for="Course.CertificationDesc" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Assesments</label>
+                                <input asp-for="Course.Feature.Assesments" class="form-control" placeholder="">
+                                <span asp-validation-for="Course.Feature.Assesments" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Duration</label>
+                                <input asp-for="Course.Feature.Duration" class="form-control" placeholder="">
+                                <span asp-validation-for="Course.Feature.Duration" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">CourseDuration</label>
+                                <input asp-for="Course.Feature.CourseDuration" class="form-control" placeholder="">
+                                <span asp-validation-for="Course.Feature.CourseDuration" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Students</label>
+                                <input asp-for="Course.Feature.Students" class="form-control" placeholder="">
+                                <span asp-validation-for="Course.Feature.Students" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Language</label>
+                                <input asp-for="Course.Feature.Language" class="form-control" placeholder="">
+                                <span asp-validation-for="Course.Feature.Language" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Starts</label>
+                                <input asp-for="Course.Feature.Starts" class="form-control" placeholder="">
+                                <span asp-validation-for="Course.Feature.Starts" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">SkillLevel</label>
+                                <input asp-for="Course.Feature.SkillLevel" class="form-control" placeholder="">
+                                <span asp-validation-for="Course.Feature.SkillLevel" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Price</label>
+                                <input asp-for="Course.Feature.Price" class="form-control" placeholder="">
+                                <span asp-validation-for="Course.Feature.Price" class="text-danger"></span>
+                            </div>
+                            @*<div class="form-group">
+                                <label for="exampleInputUsername1">Assesments</label>
+                                <input asp-for="Feature.Assesments" class="form-control" placeholder="">
+                                <span asp-validation-for="Feature.Assesments" class="text-danger"></span>
+                            </div>*@
+                            
+                            
+
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Categories</label>
+                                <select class="form-control" asp-for="CategoryIds">
+                                    @foreach (var s in Model.Categories)
+                                    {
+                                        <option value="@s.Id">@s.Name</option>
+                                    }
+                                </select>
+
+                                <span asp-validation-for="CategoryIds" class="text-danger"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary me-2">Submit</button>
+                            <a class="btn btn-light" asp-action="Index">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/lib/select2/js/select2.full.min.js"></script>
+    <script src="~/js/select2.js"></script>
+    <script>
+
+             ClassicEditor
+            .create(document.querySelector('#MainDesc'))
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#ApplyDesc'))
+            .catch(error => {
+                console.error(error);
+            });
+       ClassicEditor
+            .create(document.querySelector('#CertificationDesc'))
+            .catch(error => {
+                console.error(error);
+            });
+             ClassicEditor
+            .create(document.querySelector('#AboutDesc'))
+            .catch(error => {
+                console.error(error);
+            });
+        $("#CategoryIds").select2({
+            placeholder: "Select multiple category",
+            theme: "bootstrap4",
+            allowClear: true
+        });
+    </script>
+
+}

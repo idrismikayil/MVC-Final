@@ -1,0 +1,72 @@
+﻿@model TeacherDetailVM
+@{
+    ViewData["Title"] = "Delete";
+}
+
+ <div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">@Model.Teacher.Fullname</h4>
+                  <img src="~/assets/img/teacher/@Model.Teacher.Image" style="width: 450px" />
+                  <p>
+                     About: @Html.Raw(@Model.Teacher.About)
+                  </p>
+                  <p>
+                   Degree: @Model.Teacher.Degree
+                  </p>
+                  <p>
+                   Hobbies: @Model.Teacher.Hobbies
+                  </p>
+                  <p>
+                   Faculty: @Model.Teacher.Faculty
+                  </p>
+                  <p>
+                   Experience: @Model.Teacher.Experience
+                  </p>
+                  <p>
+                   Position: @Model.Teacher.Position
+                  </p>
+
+                  <p>
+                   Mail: @Model.TeacherContact.Mail
+                  </p>
+                  <p>
+                   PhoneNumber: @Model.TeacherContact.PhoneNumber
+                  </p>
+                  <p>
+                   Skype: @Model.TeacherContact.Skype
+                  </p>
+                  <p>
+                   FirstURL: @Model.TeacherContact.FirstURL
+                  </p>
+                  <p>
+                   SecondURL: @Model.TeacherContact.SecondURL
+                  </p>
+                  <p>
+                   ThirdURL: @Model.TeacherContact.ThirdURL
+                  </p>
+                  <p>
+                   FourthURL: @Model.TeacherContact.FourthURL
+                  </p>
+
+                  @*@foreach (var item in Model.TeacherSkills)
+                 {
+                     <p>@item.Skill.SkillName - @item.Percentage</p>
+                 }*@
+                 <p>Skills: </p>
+                 @foreach (var item in Model.Teacher.TeacherSkills)
+                {
+                    <p>@item.Skill.SkillName - @item.Percentage </p>
+                }
+                  <p>Eminsinizmi ?</p>
+                  <form method="post" asp-action="Delete"><button class="btn btn-secondary" type="submit">Submit</button></form>
+                  <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+                </div>
+              </div>
+            </div>
+           </div>
+          </div>
+        </div>

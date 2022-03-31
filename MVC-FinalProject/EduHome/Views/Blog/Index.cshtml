@@ -1,0 +1,38 @@
+﻿@model List<Blog>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="banner-area-wrapper">
+            <div class="banner-area text-center">	
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="banner-content-wrapper">
+                                <div class="banner-content">
+                                    <h2>blog</h2> 
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+		<!-- Banner Area End -->
+        <!-- Blog Start -->
+        <div class="blog-area pt-150 pb-150">
+            <div class="container">
+                    @await Html.PartialAsync("_BlogPartialView")
+                <div class="row">
+                    <div class="col-12">
+                        <div class="pagination">
+                            <ul>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

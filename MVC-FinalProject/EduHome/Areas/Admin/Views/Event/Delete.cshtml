@@ -1,0 +1,60 @@
+﻿@model EventVM
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body" style="background-color: #B2BABB">
+                  <ul>
+                      
+                   <li>
+                      Event Title: @Model.Event.Title
+                  </li>
+                  <li>
+                      Event Image: <br> <img src="~/assets/img/event/@Model.Event.Image">
+                  </li>
+                  <li>
+                      Event Title: @Model.Event.Title
+                  </li>
+                  <li>
+                      Event Description: @Model.Event.Description
+                  </li>
+                  <li>
+                      Event Day: @Model.Event.Date.ToString("dd MMMM yyyy")
+                  </li>
+                   <li>
+                      Event Time: @Model.Event.HourStart.ToString("hh:mm tt") - @Model.Event.HourEnd.ToString("hh:mm tt")
+                  </li>
+                  <li>
+                      Event Location: @Model.Event.Location
+                  </li><br><br>
+                  <li>-----Speakers-----</li><br>
+                 @foreach (var item in Model.Speakers)
+                {
+                     <li>
+                      Speaker Name : @item.Fullname
+                  </li>
+                   <li>
+                      Speaker Image :<br> <img src="~/assets/img/event/@item.Image">
+                  </li>
+                   <li>
+                      Speaker Position : @item.Position
+                  </li><br><br><br>
+                }
+                  </ul>
+                  <form style="display: inline-block" method="post" asp-action="Delete"><button class="btn btn-secondary" type="submit">Submit</button></form>
+                  <a class="btn btn-primary" asp-action="Index">Cancel</a>
+                </div>
+              </div>
+            </div>
+             </div>
+              </div>
+            </div>
+
+
+

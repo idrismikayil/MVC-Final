@@ -1,0 +1,146 @@
+﻿@model CourseDetailVM
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="banner-area-wrapper">
+            <div class="banner-area text-center">	
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="banner-content-wrapper">
+                                <div class="banner-content">
+                                    <h2>courses details</h2> 
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+		<!-- Banner Area End -->
+        <!-- Blog Start -->
+        <div class="courses-details-area blog-area pt-150 pb-140">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="courses-details">
+                            <div class="courses-details-img">
+                                <img src="~/assets/img/course/@Model.Course.Image" alt="courses-details">
+                            </div>
+                            <div class="course-details-content">
+                                <h2>@Model.Course.MainTitle</h2>
+                                <p>@Html.Raw(@Model.Course.MainDesc)</p>
+                                <div class="course-details-left">
+                                    <div class="single-course-left">
+                                        <h3>about course</h3>
+                                        <p>@Html.Raw(@Model.Course.AboutDesc)</p>
+                                    </div>
+                                    <div class="single-course-left">
+                                        <h3>how to apply</h3>
+                                        <p>@Html.Raw(@Model.Course.ApplyDesc)</p>
+                                    </div>
+                                    <div class="single-course-left">
+                                        <h3>certification</h3>
+                                        <p class="margin">@Html.Raw(@Model.Course.CertificationDesc)</p>
+                                    </div>
+                                </div>
+                                <div class="course-details-right">
+                                    <h3>COURSE FEATURES</h3>
+                                    <ul>
+                                        <li>starts <span>@Model.Feature.Starts.ToString("dd, MMMM yyyy")</span></li>
+                                        <li>duration <span>@Model.Feature.Duration</span></li>
+                                        <li>class duration <span>@Model.Feature.CourseDuration</span></li>
+                                        <li>skill level <span>@Model.Feature.SkillLevel</span></li>
+                                        <li>language <span>@Model.Feature.Language</span></li>
+                                        <li>students <span>@Model.Feature.Students</span></li>
+                                        <li>assesments <span>@Model.Feature.Assesments</span></li>
+                                    </ul>
+                                    <h3 class="red">course fee $@Model.Feature.Price</h3>
+                                </div>
+                            </div>    
+                              @await Component.InvokeAsync("Reply") 
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog-sidebar right">
+                            <div class="single-blog-widget mb-50">
+                                <h3>search</h3>
+                                <div class="blog-search">
+                                    <form id="search" action="#">
+                                        <input type="search" placeholder="Search..." name="search" />
+                                        <button type="submit">
+                                            <span><i class="fa fa-search"></i></span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="single-blog-widget mb-50">
+                                <h3>categories</h3>
+                                @await Component.InvokeAsync("Category") 
+                            </div>
+                            <div class="single-blog-widget mb-50">
+                                <div class="single-blog-banner">
+                                    <a href="blog-details.html" id="blog"><img src="~/assets/img/blog/blog-img.jpg" alt="blog"></a>
+                                    <h2>best<br> eductaion<br> theme</h2> 
+                                </div>
+                            </div>
+                            <div class="single-blog-widget mb-50">
+                                <h3>latest post</h3>
+                                <div class="single-post mb-30">
+                                    <div class="single-post-img">
+                                        <a href="blog-details.html"><img src="~/assets/img/post/post1.jpg" alt="post">
+                                            <div class="blog-hover">
+                                                <i class="fa fa-link"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="single-post-content">
+                                        <h4><a href="blog-details.html">English Language Course for you</a></h4>
+                                        <p>By Alex  /  June 20, 2017</p>
+                                    </div>
+                                </div>
+                                <div class="single-post mb-30">
+                                    <div class="single-post-img">
+                                        <a href="blog-details.html"><img src="~/assets/img/post/post2.jpg" alt="post">
+                                            <div class="blog-hover">
+                                                <i class="fa fa-link"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="single-post-content">
+                                        <h4><a href="blog-details.html">Advance Web Design and Develop</a></h4>
+                                        <p>By Alex  /  June 20, 2017</p>
+                                    </div>
+                                </div>
+                                <div class="single-post">
+                                    <div class="single-post-img">
+                                        <a href="blog-details.html"><img src="~/assets/img/post/post3.jpg" alt="post">
+                                            <div class="blog-hover">
+                                                <i class="fa fa-link"></i>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="single-post-content">
+                                        <h4><a href="blog-details.html">English Language Course for you</a></h4>
+                                        <p>By Alex  /  June 20, 2017</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-blog-widget">
+                                <h3>tags</h3>
+                                <div class="single-tag">
+                                    <a href="blog-details.html" class="mr-10 mb-10">course</a>
+                                    <a href="blog-details.html" class="mr-10 mb-10">education</a>
+                                    <a href="blog-details.html" class="mb-10">teachers</a>
+                                    <a href="blog-details.html" class="mr-10">learning</a>
+                                    <a href="blog-details.html" class="mr-10">university</a>
+                                    <a href="blog-details.html">events</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+

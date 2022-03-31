@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -22,6 +23,10 @@ namespace EduHome.Models
         
         [NotMapped]
         public DateTime CreatedAt { get; set; } = DateTime.Now;
+
+        [NotMapped]
+        [Required]
+        public IFormFile ImageFile { get; set; }
 
     }
 }

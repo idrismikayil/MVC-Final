@@ -1,0 +1,27 @@
+﻿@model NoticeBoard
+@{
+    ViewData["Title"] = "Delete";
+}
+
+ <div class="main-panel">        
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                    <p>
+                     Date: @Model.Date.ToString("dd, MMMM yyyy")
+                    </p>
+                  <p>
+                   Description: @Html.Raw(Model.Description)
+                  </p><br><br>
+                   <p>Are you sure ?</p>
+                  <form style="display: inline-block" method="post" asp-action="Delete"><button class="btn btn-secondary" type="submit">Submit</button></form>
+                  <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+                </div>
+              </div>
+            </div>
+           </div>
+          </div>
+        </div>
+

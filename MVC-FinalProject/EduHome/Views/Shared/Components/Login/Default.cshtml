@@ -1,0 +1,25 @@
+﻿<div class="header-top">
+		        <div class="container">
+		            <div class="row">
+		                <div class="col-md-8 col-sm-8">
+		                    <div class="header-top-left">
+		                        <p>HAVE ANY QUESTION ?  +880 5698  598  6587</p>
+		                    </div>
+		                </div>
+		                <div class="col-md-4 col-sm-4">
+		                    <div class="header-top-right text-md-end text-center">
+		                        <ul>
+		                             @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li><a  asp-controller="Account" asp-action="Login">Sign In</a></li>
+                    }
+                    else
+                    {
+                        <li><a  asp-controller="Account" asp-action="Logout">Logout</a></li>
+                    }
+		                        </ul>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>

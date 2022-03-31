@@ -26,11 +26,10 @@ namespace EduHome.Controllers
             {
                 Sliders = await _context.Sliders.OrderBy(s => s.Order).ToListAsync(),
                 Informations = await _context.Informations.ToListAsync(),
-                Notices = await _context.Notices.OrderByDescending(n => n.Id).ToListAsync(),
+                //Notices = await _context.Notices.OrderByDescending(n => n.Id).ToListAsync(),
                 WhyUs = await _context.WhyUs.FirstOrDefaultAsync(),
-                Testimonials = await _context.Testimonials.FirstOrDefaultAsync(),
                 Courses = await _context.Courses.Take(3).ToListAsync(),
-                Events = await _context.Events.Take(8).OrderByDescending(e => e.Id).ToListAsync(),
+                Events = await _context.Events.Take(4).OrderByDescending(e => e.Id).ToListAsync(),
                 Blogs = await _context.Blogs.Take(3).ToListAsync(),
             };
             return View(model);

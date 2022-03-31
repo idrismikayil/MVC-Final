@@ -1,0 +1,70 @@
+﻿@model AboutVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+		<div class="banner-area-wrapper">
+            <div class="banner-area text-center">	
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="banner-content-wrapper">
+                                <div class="banner-content">
+                                    <h2>about us</h2> 
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <div class="about-area pt-105">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="about-content">
+                            <h2>@Model.WelcomeMessage.Title</h2>
+                            <p>@Model.WelcomeMessage.Description</p>
+                            <a class="default-btn" asp-controller="Course" asp-action="Index">view courses</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="about-img">
+                            <img src="~/assets/img/about/@Model.WelcomeMessage.Image" alt="about">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+          @await Html.PartialAsync("_TeacherPartialView", model: Model.Teachers)
+        
+
+         @await Component.InvokeAsync("Testimonial") 
+
+         <section class="notice-area two pt-140 pb-100">
+            <div class="container">
+                            <h3 class="mb-33" style="color: #2c2b5e; font-size: 28px">TAKE A VIDEO TOUR</h3>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="notice-right-wrapper mb-25 pb-25">
+                            <div class="notice-video">
+                                <div class="video-icon video-hover">
+                                    <a class="video-popup" href="https://www.youtube.com/watch?v=fkoEj95puX0">
+                                        <i class="zmdi zmdi-play"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                             @await Component.InvokeAsync("NoticeBoard") 
+
+                </div>
+            </div>
+        </section>
+
+
+

@@ -2,18 +2,18 @@
                     @foreach (var item in Model)
                    {
                        <div class="col-lg-4 col-md-6">
-                        <div class="single-course">
+                        <div class="single-course mb-70">
                             <div class="course-img">
-                                <a href="~/assets/course-details.html"><img src="~/assets/img/course/@item.Image" alt="course">
+                                <a asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id"><img src="~/assets/img/course/@item.Image" alt="course">
                                     <div class="course-hover">
                                         <i class="fa fa-link"></i>
                                     </div>
                                 </a>
                             </div>
                             <div class="course-content">
-                                <h3><a href="~/assets/course-details.html">@item.MainTitle</a></h3>
-                                <p>@item.MainDesc</p>
-                                <a class="default-btn" href="~/assets/course-details.html">read more</a>
+                                <h3><a asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id">@item.MainTitle</a></h3>
+                                <p>@Html.Raw(@item.MainDesc.Substring(0, item.MainDesc.Length>120 ? 120:item.MainDesc.Length))</p>
+                                <a class="default-btn" asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id">read more</a>
                             </div>   
                         </div>
                     </div>

@@ -1,0 +1,105 @@
+﻿@model EventVM
+@{
+    ViewData["Title"] = "Update";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Update Flower</h4>
+                        <form class="forms-sample" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Title</label>
+                                <input asp-for="Event.Title" class="form-control" placeholder="">
+                                <span asp-validation-for="Event.Title" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Description</label>
+                                <textarea asp-for="Event.Description" class="form-control" placeholder=""></textarea>
+                                <span asp-validation-for="Event.Title" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Date</label>
+                                <input asp-for="Event.Date" class="form-control" placeholder="">
+                                <span asp-validation-for="Event.Title" class="text-danger"></span>
+                            </div>
+                  
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Hour Start</label>
+                                <input asp-for="Event.HourStart" class="form-control" placeholder="">
+                                <span asp-validation-for="Event.Title" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Hour End</label>
+                                <input asp-for="Event.HourEnd" class="form-control" placeholder="">
+                                <span asp-validation-for="Event.Title" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Location</label>
+                                <input asp-for="Event.Location" class="form-control" placeholder="">
+                                <span asp-validation-for="Event.Title" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">MainImage</label>
+                                <input asp-for="Event.ImageFile" type="file" accept="image/*" class="form-control" placeholder="">
+                                <span asp-validation-for="Event.Image" class="text-danger"></span>
+                            </div>
+                            <input type="hidden" asp-for="@Model.Event.Id" />
+                            
+                            @*<div class="form-group">
+                                <label for="exampleInputUsername1">Campaign</label>
+                                <select class="form-control" asp-for="CampaignId">
+                                    <option></option>
+                                    @foreach (var campaign in Model.Campaigns)
+                                    {
+                                        <option value="@campaign.Id">@campaign.DiscountPercent</option>
+                                    }
+                                </select>
+
+                                <span asp-validation-for="CampaignId" class="text-danger"></span>
+                            </div>*@
+
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Categories</label>
+                                <select class="form-control" asp-for="SpeakerIds">
+                                    @foreach (var s in Model.Speakers)
+                                    {
+                                        <option value="@s.Id">@s.Fullname</option>
+                                    }
+                                </select>
+
+                                <span asp-validation-for="Speakers" class="text-danger"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary me-2">Submit</button>
+                            <a class="btn btn-light" asp-action="Index">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" integrity="sha512-o6XqxgrUsKmchwy9G5VRNWSSxTS4Urr4loO6/0hYdpWmFUfHqGzawGxeQGMDqYzxjY9sbktPbNlkIQJWagVZQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/lib/select2/js/select2.full.min.js"></script>
+    <script src="~/js/select2.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#Desc'))
+            .catch(error => {
+                console.error(error);
+            });
+        $("#SpeakerIds").select2({
+            placeholder: "Select multiple categories",
+            theme: "bootstrap4",
+            allowClear: true
+        });
+    </script>
+
+}

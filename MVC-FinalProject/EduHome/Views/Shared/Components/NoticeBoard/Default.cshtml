@@ -1,0 +1,14 @@
+﻿@model List<NoticeBoard> 
+
+                   <div class="col-md-6">
+                        <div class="notice-left wrapper">
+                            <h3>notice board</h3>
+                            @foreach (var item in Model)
+                           {
+                               <div class="single-notice-left mb-25 pb-25">
+                                <h4>@item.Date.ToString("dd, MMMM yyyy")</h4>
+                                <p>@Html.Raw(@item.Description)</p>
+                            </div>
+                           }
+                        </div>
+                    </div>

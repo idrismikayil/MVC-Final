@@ -1,0 +1,85 @@
+﻿@model TeacherDetailVM
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="banner-area-wrapper">
+            <div class="banner-area text-center">	
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="banner-content-wrapper">
+                                <div class="banner-content">
+                                    <h2>teachers / details</h2> 
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+
+         <div class="teacher-details-area pt-150 pb-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="teacher-details-img">
+                            <img src="~/assets/img/teacher/@Model.Teacher.Image" alt="teacher" style="width: 400px">  
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="teacher-details-content ml-50">
+                            <h2>@Model.Teacher.Fullname</h2>
+                            <h5>@Model.Teacher.Position</h5>
+                            <h4>about me</h4>
+                            <p>@Html.Raw(@Model.Teacher.About)</p>
+                            <ul>
+                                <li><span>degree: </span>@Model.Teacher.Faculty</li>
+                                <li><span>experience: </span>@Model.Teacher.Experience</li>
+                                <li><span>hobbies: </span>@Model.Teacher.Hobbies</li>
+                                <li><span>faculty: </span>@Model.Teacher.Faculty</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-4">
+                        <div class="teacher-contact">
+                            <h4>contact information</h4>
+                            <p><span>mail me : </span>@Model.TeacherContact.Mail</p>
+                            <p><span>make a call : </span>@Model.TeacherContact.PhoneNumber</p>
+                            <p><span>skype : </span>@Model.TeacherContact.Skype</p>
+                            <ul>
+                                    <li><a href="@Model.TeacherContact.FirstURL"><i class="@Model.TeacherContact.FirstSocialMediaLogo"></i></a></li>
+                                    <li><a href="@Model.TeacherContact.SecondURL"><i class="@Model.TeacherContact.SecondSocialMediaLogo"></i></a></li>
+                                    <li><a href="@Model.TeacherContact.ThirdURL"><i class="@Model.TeacherContact.ThirdSocialMediaLogo"></i></a></li>
+                                    <li><a href="@Model.TeacherContact.FourthURL"><i class="@Model.TeacherContact.FourthSocialMediaLogo"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8">
+                        <div class="skill-area">
+                            <h4>skills</h4>
+                        </div>  
+                        <div class="skill-wrapper">     
+                            <div class="row">
+                                @foreach (var item in @Model.Teacher.TeacherSkills)
+                               {
+                                   <div class="col-md-4">
+                                    <div class="skill-bar-item">
+                                        <span>@item.Skill.SkillName</span>
+                                        <div class="progress mt-5">
+                                            <div data-wow-delay="1.2s" data-wow-duration="1.5s" style="width: @item.Percentage%; visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: fadeInLeft;" data-progress="50%" class="progress-bar wow fadeInLeft">
+                                                <span class="text-top">@item.Percentage %</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               }
+                                
+                            </div>   
+                        </div>     
+                    </div>
+                </div>
+            </div>
+        </div>

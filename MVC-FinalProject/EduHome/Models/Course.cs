@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EduHome.Models
 {
@@ -26,5 +28,9 @@ namespace EduHome.Models
         public string CertificationDesc { get; set; }
         public List<CourseCategory> CourseCategories { get; set; }
         public Feature Feature { get; set; }
+        [NotMapped]
+        [Required]
+        public IFormFile ImageFile { get; set; }
+
     }
 }
