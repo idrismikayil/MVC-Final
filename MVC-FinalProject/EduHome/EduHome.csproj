@@ -13,6 +13,8 @@
     <Compile Remove="Migrations\20220317200031_createEventSpeaker.Designer.cs" />
     <Compile Remove="Migrations\20220322195755_ContactTable.cs" />
     <Compile Remove="Migrations\20220322195755_ContactTable.Designer.cs" />
+    <Compile Remove="Migrations\20220331180501_Subscribe.cs" />
+    <Compile Remove="Migrations\20220331180501_Subscribe.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

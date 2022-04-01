@@ -466,21 +466,6 @@ namespace EduHome.Migrations
                     b.ToTable("Speakers");
                 });
 
-            modelBuilder.Entity("EduHome.Models.Subscriber", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Subscribers");
-                });
-
             modelBuilder.Entity("EduHome.Models.Teacher", b =>
                 {
                     b.Property<int>("Id")
