@@ -29,10 +29,24 @@
                     </div>
                     <div class="course-form">
                         <form id="search" action="#">
-                            <input type="search" placeholder="Search..." name="search" />
+                            <input type="search" placeholder="Search..." name="search" id="search-input"/>
+                            <ul id="search-result" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><input type="text" id="search-input"></li>
+                            
+                        </ul>
                             <button type="submit">search</button>
                         </form>
                     </div>
+
+                     @*<div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-search me-2"></i>
+                        </button>
+                        <ul id="search-result" class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><input type="text" id="search-input"></li>
+                            
+                        </ul>
+                    </div>*@
                 </div>
             </div>     
             <div class="row">

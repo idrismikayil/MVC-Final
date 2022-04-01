@@ -260,3 +260,4 @@ C:\Users\HP\OneDrive\Masaüstü\Backend\MVC-Final\MVC-FinalProject\EduHome\obj\D
 C:\Users\HP\OneDrive\Masaüstü\Backend\MVC-Final\MVC-FinalProject\EduHome\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\GetRoles.cshtml.g.cs
 C:\Users\HP\OneDrive\Masaüstü\Backend\MVC-Final\MVC-FinalProject\EduHome\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\AddRole.cshtml.g.cs
 C:\Users\HP\OneDrive\Masaüstü\Backend\MVC-Final\MVC-FinalProject\EduHome\obj\Debug\netcoreapp3.1\EduHome.csproj.AssemblyReference.cache
+C:\Users\HP\OneDrive\Masaüstü\Backend\MVC-Final\MVC-FinalProject\EduHome\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SearchPartialView.cshtml.g.cs

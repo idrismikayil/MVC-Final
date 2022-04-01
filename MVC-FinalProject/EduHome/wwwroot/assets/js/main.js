@@ -133,4 +133,18 @@
         });
     }
 
+    $(document).on("keyup", "#search-input", function () {
+
+        var searchStr = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: "/Course/search/?searchStr=" + searchStr,
+
+            success: function (response) {
+                $("#search-result li:not(:first-child)").remove();
+                $("#search-result").append(response);
+            }
+        });
+    });
+
 })(jQuery);	

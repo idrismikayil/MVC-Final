@@ -3,6 +3,7 @@ using EduHome.Models;
 using EduHome.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -35,6 +36,17 @@ namespace EduHome.Controllers
             };
 
             return View(model);
+        }
+
+        public async Task<IActionResult> Search(string searchStr)
+        {
+            if (string.IsNullOrWhiteSpace(searchStr))
+            {
+                return PartialView("_SearchPartialView", new List<Course>());
+            }
+
+            var course = await _context.Courses.Where(f => f.MainTitle.ToUpper().Contains(searchStr.ToUpper())).ToListAsync();
+            return PartialView("_SearchPartialView", course);
         }
     }
 }

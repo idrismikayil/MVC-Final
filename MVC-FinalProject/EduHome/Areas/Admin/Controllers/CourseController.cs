@@ -47,7 +47,7 @@ namespace EduHome.Areas.Admin.Controllers
 
         public async Task<IActionResult> Update(int id)
         {
-            var course = await _context.Courses.Include(t => t.Feature).Include(t => t.CourseCategories).ThenInclude(t => t.Category).FirstOrDefaultAsync(f => f.Id == id);
+            var course = await _context.Courses.Include(t => t.CourseCategories).ThenInclude(t => t.Category).FirstOrDefaultAsync(f => f.Id == id);
             if (course == null) return NotFound();
 
             List<Category> cts = new List<Category>();
@@ -59,6 +59,7 @@ namespace EduHome.Areas.Admin.Controllers
             CourseVM model = new CourseVM();
 
             model.Course = course;
+            model.Feature = await _context.Features.FirstOrDefaultAsync(f => f.CourseId == id);
             model.Categories = _context.Categories.ToList();
             model.CategoryIds = cts.Select(x => x.Id).ToList();
             return View(model);
@@ -68,10 +69,6 @@ namespace EduHome.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int id, CourseVM model)
         {
-            var course = await _context.Courses.Include(t => t.Feature).Include(t => t.CourseCategories).ThenInclude(t => t.Category).FirstOrDefaultAsync(f => f.Id == id);
-            if (course == null) return NotFound();
-
-            model.Feature = await _context.Features.FirstOrDefaultAsync();
 
             List<Category> categories1 = new List<Category>();
 
@@ -89,6 +86,9 @@ namespace EduHome.Areas.Admin.Controllers
                 await _context.CourseCategories.AddAsync(crsCat);
             }
 
+            if (model.Course.Id != id) return BadRequest();
+
+
             if (!model.Course.ImageFile.IsSupported("image"))
             {
                 ModelState.AddModelError(nameof(Course.ImageFile), "File type is unsupported, please select image");
@@ -102,20 +102,12 @@ namespace EduHome.Areas.Admin.Controllers
 
             model.Course.Image = FileUtils.Create(FileConstants.ImagePathCourse, model.Course.ImageFile);
 
-            //course.MainTitle = model.MainTitle;
-            //course.AboutDesc = model.AboutDesc;
-            //course.MainDesc = model.MainDesc;
-            //course.ApplyDesc = model.ApplyDesc;
-            //course.CertificationDesc = model.CertificationDesc;
-            //course.Feature = model.Feature;
-            //course.Image = model.Image != null ? FileUtils.Create(FileConstants.ImagePathCourse, model.ImageFile) : course.Image;
-
             CourseVM vm = new CourseVM
             {
                 Course = model.Course,
                 Categories = await _context.Categories.Include(c => c.CourseCategories).ThenInclude(s => s.Category)
                 .Where(c => c.CourseCategories.Select(c => c.CourseId).Contains(id)).ToListAsync(),
-                Feature = model.Feature,
+                Feature = await _context.Features.FirstOrDefaultAsync(f => f.CourseId == id)
             };
 
             bool isExist = await _context.Courses.AnyAsync(l => l.Id == id);

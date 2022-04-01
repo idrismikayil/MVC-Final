@@ -53,90 +53,76 @@ namespace EduHome.Areas.Admin.Controllers
 
         public async Task<IActionResult> Update(int id)
         {
-            var teacher = await _context.Teachers.Include(t=> t.TeacherContact).Include(t=> t.TeacherSkills).ThenInclude(t=> t.Skill).FirstOrDefaultAsync(f => f.Id == id);
+            var teacher = await _context.Teachers.Include(t=> t.TeacherSkills).ThenInclude(t=> t.Skill).FirstOrDefaultAsync(f => f.Id == id);
             if (teacher == null) return NotFound();
 
-            TeacherPostVM model = new TeacherPostVM
+            List<Skill> skills = new List<Skill>();
+            foreach (var item in teacher.TeacherSkills)
             {
-                SkillIds = teacher.TeacherSkills.Select(c => c.Id).ToList(),
-                Fullname = teacher.Fullname,
-                About = teacher.About,
-                Faculty = teacher.Faculty,
-                Experience = teacher.Experience,
-                Degree = teacher.Degree,
-                Position = teacher.Position,
-                Hobbies = teacher.Hobbies,
-                Image = teacher.Image,
-                Skills = await _context.Skills.ToListAsync(),
-                TeacherContact = await _context.TeacherContact.FirstOrDefaultAsync(),
-            };
-
+                skills.Add(item.Skill);
+            }
+            TeacherDetailVM model = new TeacherDetailVM();
+            
+            model.Teacher = teacher;
+            model.TeacherContact = await _context.TeacherContact.FirstOrDefaultAsync(f => f.TeacherId == id);
+            model.Skills = await _context.Skills.ToListAsync();
+            model.SkillIds = skills.Select(c => c.Id).ToList();
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int id, TeacherPostVM model)
+        public async Task<IActionResult> Update(int id, TeacherDetailVM teachers)
         {
-            var teacher = await _context.Teachers.Include(t => t.TeacherContact).Include(t => t.TeacherSkills).ThenInclude(t => t.Skill).FirstOrDefaultAsync(f => f.Id == id);
-            if (teacher == null) return NotFound();
+            List<Skill> skills = new List<Skill>();
 
-            model.Skills = await _context.Skills.ToListAsync();
-            model.TeacherContact = await _context.TeacherContact.FirstOrDefaultAsync();
 
-            //if (!ModelState.IsValid) return View(model);
+            var olsSkillIds = await _context.TeacherSkill.Where(x => x.TeacherId == teachers.Teacher.Id).Select(x => x.SkillId).ToListAsync();
 
-            List<TeacherSkill> skills = new List<TeacherSkill>();
-            foreach (var skillId in model.SkillIds)
+            foreach (var oldId in olsSkillIds)
             {
-                var skill = await _context.Skills.FindAsync(skillId);
-                if (skill == null)
-                {
-                    ModelState.AddModelError(nameof(TeacherPostVM.SkillIds), "Choose a valid skill");
-                    return View(model);
-                }
-                skills.Add(new TeacherSkill { SkillId = skillId });
+                var oldTeacherSkill = await _context.TeacherSkill.FirstOrDefaultAsync(x => x.SkillId == oldId && x.TeacherId == teachers.Teacher.Id);
+                _context.TeacherSkill.Remove(oldTeacherSkill);
             }
 
-            //if (model.Image != null)
-            //{
-            //    if (!model.ImageFile.IsOkay())
-            //    {
-            //        ModelState.AddModelError(nameof(TeacherPostVM.Image), "There is a problem in your file");
-            //        return View(model);
-            //    }
+            foreach (var newId in teachers.SkillIds)
+            {
+                TeacherSkill teacherSkill = new TeacherSkill() { TeacherId = teachers.Teacher.Id, SkillId = newId };
+                await _context.TeacherSkill.AddAsync(teacherSkill);
+            }
 
-            //    FileUtils.Delete(Path.Combine(FileConstants.ImagePathTeacher, teacher.Image));
-            //}
 
-            if (!model.ImageFile.IsSupported("image"))
+            if (teachers.Teacher.Id != id) return BadRequest();
+
+            if (!teachers.Teacher.ImageFile.IsSupported("image"))
             {
                 ModelState.AddModelError(nameof(Teacher.ImageFile), "File type is unsupported, please select image");
-                return View();
+                return View(teachers);
             }
-            if (model.ImageFile.IsGreatergivenMb(1))
+            if (teachers.Teacher.ImageFile.IsGreatergivenMb(1))
             {
                 ModelState.AddModelError(nameof(Teacher.ImageFile), "File size cannot be greater than 1 mb");
-                return View();
+                return View(teachers);
             }
 
-            model.Image = FileUtils.Create(FileConstants.ImagePathTeacher, model.ImageFile);
+            teachers.Teacher.Image = FileUtils.Create(FileConstants.ImagePathTeacher, teachers.Teacher.ImageFile);
 
-            teacher.Fullname = model.Fullname;
-            teacher.About = model.About;
-            teacher.Hobbies = model.Hobbies;
-            teacher.Experience = model.Experience;
-            teacher.Degree = model.Degree;
-            teacher.Faculty = model.Faculty;
-            teacher.Position = teacher.Position;
-            teacher.TeacherContact = model.TeacherContact;
-            teacher.Image = model.Image != null ? FileUtils.Create(FileConstants.ImagePathTeacher, model.ImageFile) : teacher.Image;
+            TeacherDetailVM model = new TeacherDetailVM
+            {
+                Teacher = teachers.Teacher,
+                Skills = await _context.Skills.Include(c => c.TeacherSkills).ThenInclude(s => s.Skill)
+                .Where(c => c.TeacherSkills.Select(c => c.TeacherId).Contains(id)).ToListAsync(),
+                TeacherContact = await _context.TeacherContact.FirstOrDefaultAsync(f => f.TeacherId == id)
+             };
 
-            _context.Teachers.Update(teacher);
+            bool isExist = await _context.Teachers.AnyAsync(l => l.Id == id);
+            if (!isExist) return NotFound();
+
+            _context.Teachers.Update(teachers.Teacher);
             await _context.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
+
 
         public async Task<IActionResult> Create()
         {
